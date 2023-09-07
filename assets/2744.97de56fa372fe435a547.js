@@ -1,0 +1,1 @@
+(self.webpackChunkFrontendReact=self.webpackChunkFrontendReact||[]).push([[2744],{32744:(e,n,r)=>{"use strict";r.r(n),r.d(n,{default:()=>a});var t=r(67294);const a=function(e){var n=e.children;return t.createElement("article",{className:"gifbrewery-container container"},n)}}}]);
