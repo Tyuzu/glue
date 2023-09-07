@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" itemType="http://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
+    <head>
+        <title data-react-helmet="true">{{.GifTitle}}</title>
+        <meta data-react-helmet="true" charSet="utf-8"/>
+        <meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <meta data-react-helmet="true" http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+        <meta data-react-helmet="true" name="robots" content="noindex,noarchive,nosnippet,noodp,noydir,nocache"/>
+        <meta data-react-helmet="true" name="description" content="Watch and share {{.GifTitle}} GIFs on Gfyget"/>
+        <meta data-react-helmet="true" name="keywords" content="gif, animated"/>
+        <meta data-react-helmet="true" name="author" content="Gfycat"/>
+        <meta data-react-helmet="true" name="twitter:card" content="player"/>
+        <meta data-react-helmet="true" name="twitter:title" content="Create, Discover and Share Awesome GIFs on Gfyget"/>
+        <meta data-react-helmet="true" name="twitter:url" content="/ifr/{{.GifID}}"/>
+        <meta data-react-helmet="true" name="twitter:image" content="/thumbs/{{.GifID}}-size_restricted.gif"/>
+        <meta data-react-helmet="true" name="twitter:image:src" content="/thumbs/{{.GifID}}-size_restricted.gif"/>
+        <meta data-react-helmet="true" name="twitter:player" content="/ifr/{{.GifID}}"/>
+        <meta data-react-helmet="true" name="twitter:player:width" content="1268"/>
+        <meta data-react-helmet="true" name="twitter:player:height" content="1866"/>
+        <meta data-react-helmet="true" name="twitter:description" content="Watch and share {{.GifTitle}} GIFs on Gfyget"/>
+        <meta data-react-helmet="true" property="og:type" content="video"/>
+        <meta data-react-helmet="true" property="og:url" content="/thumbs/{{.GifID}}-size_restricted.gif"/>
+        <meta data-react-helmet="true" property="og:title" content="Create, Discover and Share Awesome GIFs on Gfyget"/>
+        <meta data-react-helmet="true" property="og:description" content="Watch and share {{.GifTitle}} GIFs on Gfyget"/>
+        <meta data-react-helmet="true" property="og:image" content="/thumbs/{{.GifID}}-size_restricted.gif"/>
+        <meta data-react-helmet="true" property="og:image:width" content="640"/>
+        <meta data-react-helmet="true" property="og:image:height" content="941"/>
+        <meta data-react-helmet="true" property="og:image:secure_url" content="/gifs/{{.GifID}}-size_restricted.gif"/>
+        <meta data-react-helmet="true" property="og:image" content="/posters/{{.GifID}}-mobile.jpg"/>
+        <meta data-react-helmet="true" property="og:image:width" content="640"/>
+        <meta data-react-helmet="true" property="og:image:height" content="941"/>
+        <meta data-react-helmet="true" property="og:video" content="/thumbs/{{.GifID}}-mobile.mp4"/>
+        <meta data-react-helmet="true" property="og:video:secure_url" content="/thumbs/{{.GifID}}-mobile.mp4"/>
+        <meta data-react-helmet="true" property="og:video:type" content="video/mp4"/>
+        <meta data-react-helmet="true" property="og:video:width" content="640"/>
+        <meta data-react-helmet="true" property="og:video:height" content="941"/>
+        <meta data-react-helmet="true" property="og:video:duration" content="4.28"/>
+        <meta data-react-helmet="true" property="og:video:iframe" content="/ifr/{{.GifID}}"/>
+        <meta data-react-helmet="true" name="theme-color" content="#2475FF"/>
+        <link data-react-helmet="true" rel="stylesheet" href="/assets/app.9fcc2d001cba4a6dd33d.css"/>
+        <link data-react-helmet="true" rel="canonical" href="https://gfyget.onrender.com/{{.GifURL}}"/>
+        <script data-react-helmet="true" type="application/javascript" src="//cdn.embed.ly/player-0.1.0.min.js"></script>
+
+        <script>
+            ___INITIAL_STATE__ = {
+                "intl": {
+                    "defaultLocale": "en",
+                    "locale": "en"
+                },
+                "reduxAsyncConnect": {
+                    "loaded": true,
+                    "loadState": {}
+                },
+                "routing": {
+                    "locationBeforeTransitions": {
+                        "pathname": "\u002Fifr\u002F",
+                        "search": "",
+                        "hash": "",
+                        "state": undefined,
+                        "action": "POP",
+                        "key": null,
+                        "query": {}
+                    }
+                },
+                "analytics": {
+                    "utc": null,
+                    "stc": null
+                },
+                "auth": {
+                    "isFetching": false,
+                    "isLoggedIn": false,
+                    "username": undefined,
+                    "isLoginError": false,
+                    "forgotPasswordError": false,
+                    "isForgotPasswordFetching": false,
+                    "forgotPasswordSent": false,
+                    "isFacebookFetching": false,
+                    "providerData": undefined,
+                    "secret": undefined
+                },
+                "cache": {
+                    "gifs": {
+                        "_": {
+                            "avgColor": "#9196B3",
+                            "content_urls": {
+                                "100pxGif": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-max-1mb.gif",
+                                    "size": 861995,
+                                    "width": 163,
+                                    "height": 240
+                                },
+                                "largeGif": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-size_restricted.gif",
+                                    "size": 4763759,
+                                    "width": 353,
+                                    "height": 520
+                                },
+                                "max1mbGif": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-max-1mb.gif",
+                                    "size": 861995,
+                                    "width": 163,
+                                    "height": 240
+                                },
+                                "max2mbGif": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-small.gif",
+                                    "size": 1809710,
+                                    "width": 204,
+                                    "height": 300
+                                },
+                                "max5mbGif": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-size_restricted.gif",
+                                    "size": 4763759,
+                                    "width": 353,
+                                    "height": 520
+                                },
+                                "mobile": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.mp4",
+                                    "size": 1247749,
+                                    "width": 640,
+                                    "height": 942
+                                },
+                                "mobilePoster": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.jpg",
+                                    "size": 43059,
+                                    "width": 640,
+                                    "height": 942
+                                },
+                                "mp4": {
+                                    "url": "https:\u002F\u002Fgiant.gfycat.com\u002F.mp4",
+                                    "size": 1598728,
+                                    "width": 1268,
+                                    "height": 1866
+                                },
+                                "webm": {
+                                    "url": "https:\u002F\u002Fgiant.gfycat.com\u002F.webm",
+                                    "size": 1594279,
+                                    "width": 1268,
+                                    "height": 1866
+                                },
+                                "webp": {
+                                    "url": "https:\u002F\u002Fthumbs.gfycat.com\u002F.webp",
+                                    "size": 1554132,
+                                    "width": 0,
+                                    "height": 0
+                                }
+                            },
+                            "createDate": 1563586230,
+                            "description": "",
+                            "frameRate": 15.186916,
+                            "gatekeeper": 0,
+                            "gfyId": "",
+                            "gfyName": "",
+                            "gfyNumber": 834692123,
+                            "gif100px": "https:\u002F\u002Fthumbs.gfycat.com\u002F-max-1mb.gif",
+                            "gifUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-size_restricted.gif",
+                            "hasAudio": false,
+                            "hasTransparency": false,
+                            "max1mbGif": "https:\u002F\u002Fthumbs.gfycat.com\u002F-max-1mb.gif",
+                            "max2mbGif": "https:\u002F\u002Fthumbs.gfycat.com\u002F-small.gif",
+                            "max5mbGif": "https:\u002F\u002Fthumbs.gfycat.com\u002F-size_restricted.gif",
+                            "miniPosterUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.jpg",
+                            "miniUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.mp4",
+                            "mobilePosterUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.jpg",
+                            "mobileUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.mp4",
+                            "mp4Size": 1598728,
+                            "mp4Url": "https:\u002F\u002Fgiant.gfycat.com\u002F.mp4",
+                            "nsfw": 0,
+                            "numFrames": 65,
+                            "posterUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-poster.jpg",
+                            "rating": "R",
+                            "thumb100PosterUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F-mobile.jpg",
+                            "title": "{{.GifTitle}}",
+                            "username": "anonymous",
+                            "views": 63984,
+                            "webmSize": 1594279,
+                            "webmUrl": "https:\u002F\u002Fgiant.gfycat.com\u002F.webm",
+                            "webpUrl": "https:\u002F\u002Fthumbs.gfycat.com\u002F.webp",
+                            "isSticker": false,
+                            "tags": [],
+                            "languageCategories": [],
+                            "width": 1268,
+                            "height": 1866,
+                            "likes": 9,
+                            "published": 0,
+                            "isFetching": false,
+                            "didInvalidate": false,
+                            "receivedAt": 1693200756769
+                        }
+                    },
+                    "updating": false
+                },
+                "channels": {
+                    "channelsData": {},
+                    "fetching": false,
+                    "error": {},
+                    "hasMore": true
+                },
+                "cookies": {},
+                "collection": {},
+                "collectionUpdate": {
+                    "title": {},
+                    "description": {},
+                    "tags": {},
+                    "visibility": {},
+                    "delete": {},
+                    "removal": {}
+                },
+                "corelayout": {
+                    "scrollEnabled": true
+                },
+                "dialog": {
+                    "opened": false,
+                    "actionPending": false,
+                    "actionCompleted": null
+                },
+                "dropzone": {
+                    "ref": null,
+                    "file": null,
+                    "open": false
+                },
+                "geo": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "data": {}
+                },
+                "gifActions": {
+                    "like": {},
+                    "report": {}
+                },
+                "gifContest": {
+                    "submissions": {},
+                    "categories": {},
+                    "eligible": false
+                },
+                "gifUpdate": {
+                    "title": {},
+                    "tags": {},
+                    "published": {},
+                    "deletion": {}
+                },
+                "homepage": {
+                    "HOMEPAGE_DATA_SUCCESS": function(e) {
+                        return {
+                            pending: !1
+                        }
+                    }
+                },
+                "homepagePlayerFeed": {
+                    "items": []
+                },
+                "leaderboard": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "libraryView": {
+                    "view": "grid"
+                },
+                "modal": {
+                    "modalType": null,
+                    "modalProps": {}
+                },
+                "myCollections": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "myGfycats": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "myDetails": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "data": {}
+                },
+                "myFollow": {
+                    "followers": {
+                        "isFetching": false,
+                        "isReady": false,
+                        "items": [],
+                        "hasMore": true,
+                        "cursor": null
+                    },
+                    "following": {
+                        "isFetching": false,
+                        "isReady": false,
+                        "items": [],
+                        "hasMore": true,
+                        "cursor": null
+                    },
+                    "allFollowing": {
+                        "isReady": false,
+                        "hasMore": true
+                    }
+                },
+                "myLibrarySearch": {},
+                "myLikes": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "notificationsSettings": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "promise": null,
+                    "settings": {}
+                },
+                "owa": {
+                    "authSdk": {
+                        "authenticated": false
+                    },
+                    "categories": {
+                        "tagsList": [],
+                        "tagsDict": {}
+                    },
+                    "hashRouter": {
+                        "hash": "",
+                        "prevHash": ""
+                    },
+                    "outlookApi": {
+                        "token": null,
+                        "pending": false
+                    },
+                    "search": {
+                        "searchText": "",
+                        "searchBarText": "",
+                        "resultsByTerm": {},
+                        "scrollPosition": 0
+                    }
+                },
+                "pageVisibility": {
+                    "visible": true
+                },
+                "related": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "relatedContent": {
+                    "relatedGifs": {}
+                },
+                "renderConfig": {
+                    "defaultSite": false,
+                    "mobile": false
+                },
+                "resetPassword": {
+                    "isFetching": false,
+                    "isError": false,
+                    "isReset": false,
+                    "resetKey": undefined,
+                    "username": undefined
+                },
+                "search": {},
+                "sound": {
+                    "keepAudio": false
+                },
+                "soundGifs": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "soundGifsSearch": {},
+                "stickers": {
+                    "isFetching": false,
+                    "isReady": false,
+                    "items": [],
+                    "hasMore": true,
+                    "cursor": null
+                },
+                "stickersReview": {
+                    "reviewed": {},
+                    "unreviewed": {}
+                },
+                "stickerSearch": {},
+                "subscription": {},
+                "tagSearch": {},
+                "toastNotification": {
+                    "toastType": null,
+                    "data": {}
+                },
+                "trendingTags": {},
+                "users": {},
+                "userCollections": {},
+                "userDetails": {},
+                "userGfycats": {},
+                "userLikes": {},
+                "upload": {},
+                "visibility": {
+                    "published": true
+                },
+                "viewingPreferencesSetting": {
+                    "isSaving": false
+                }
+            };
+            ___LAYOUT__ = {
+                "link": [{
+                    "rel": "stylesheet",
+                    "href": "\u002Fassets\u002Fapp.9fcc2d001cba4a6dd33d.css"
+                }],
+                "meta": [],
+                "htmlAttributes": {
+                    "lang": "en",
+                    "itemType": "http:\u002F\u002Fschema.org\u002FWebPage",
+                    "prefix": "og: http:\u002F\u002Fogp.me\u002Fns#"
+                }
+            };
+        </script>
+    </head>
+    <body class="no-mobile ">
+        <div id="root">
+        </div>
+        <script type="application/javascript" src="/assets/app.86321aa0aef121c1d9b6.js"></script>
+    </body>
+</html>
