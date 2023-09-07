@@ -24,8 +24,17 @@ func init() {
   if err != nil {
     log.Fatal("Error loading .env file")
   }
-
+rdxPing()
 }
+
+func rdxPing() {
+	k, err := conn.Ping().Result()
+	if err != nil {
+		fmt.Println("error while doing PING command in redis : %v", err)
+	}
+	fmt.Println(k)
+}
+
 
 func rdxSet(key, value string) error {
 
