@@ -13,7 +13,7 @@ import (
 var redis_url = os.Getenv("REDIS_URL")
 
 var conn = redis.NewClient(&redis.Options{
-        Addr:     redis_url,
+        Addr:     ":6379",
         Password: "", // no password set
         DB:       0,  // use default DB
     })
