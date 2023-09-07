@@ -18,7 +18,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const PORT = "localhost:4000"
+const PORT = ":8000"
 
 var tmpl = template.Must(template.ParseGlob("*.html"))
 var uploadPath = "./giants"
