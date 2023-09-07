@@ -28,7 +28,8 @@ rdxPing()
 }
 
 func rdxPing() {
-	k, err := conn.Ping().Result()
+ctx := context.Background()
+	k, err := conn.Ping(ctx).Result()
 	if err != nil {
 		fmt.Println("error while doing PING command in redis : %v", err)
 	}
