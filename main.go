@@ -34,13 +34,13 @@ func main() {
 func HandleRoutes() {
 	router := mux.NewRouter()
 	router.HandleFunc("/", Index)
+	router.HandleFunc("/@{UserName}", Index)
+	router.HandleFunc("/@ellygator/manage/gifs", Index)
 	router.HandleFunc("/upload", UploadFileHandler).Methods("POST")
 	router.HandleFunc("/upload", Index).Methods("GET")
 	router.HandleFunc("/create", Index).Methods("GET")
 	router.HandleFunc("/me/subscription", Index)
 	router.HandleFunc("/upload/results", Index)
-	router.HandleFunc("/login", Res)
-	router.HandleFunc("/signup", Res)
 	router.HandleFunc("/v1/gfycats/fetch/status/{FileName}", Status)
 	router.HandleFunc("/v1/gfycats/exist/{FileName}", FilePresence)
 	router.HandleFunc("/v1/gfycats", Name).Methods("POST")
@@ -48,42 +48,56 @@ func HandleRoutes() {
 	router.HandleFunc("/ifr/{FileName}", IFR).Methods("GET")
 	//~ router.HandleFunc("/amp/{FileName}", AMP).Methods("GET")
 	router.HandleFunc("/v1/gfycats/{GifName}/key/{Key}", Delete).Methods("DELETE")
+	router.HandleFunc("/v1/me/gfycats/{GifName}/published", Delete).Methods("DELETE")
 	router.HandleFunc("/viewall", ViewAllFiles).Methods("GET")
 	router.HandleFunc("/del/{PostId}", DeleteFile).Methods("DELETE")
+	router.HandleFunc("/v1/users/{userid}", UserProfileFunction).Methods("GET")
+	router.HandleFunc("/v1/me", MeFunc).Methods("GET")
+	router.HandleFunc("/v1/gfycats/fetch/status", FetchStatusFunction).Methods("GET")
 
 	//	---
-	router.HandleFunc("/oauth/weblogin", WebLogin).Methods("POST") 
-	//{"grant_type":"password","username":"dgfd","password":"gr"}
-	router.HandleFunc("/oauth/webtoken", WebToken).Methods("POST") 
+	router.HandleFunc("/oauth/weblogin", WebloginFunction).Methods("POST") 
+	router.HandleFunc("/oauth/webtoken", WebtokenFunction).Methods("POST") 
 	router.HandleFunc("/oauth/token", OauthToken).Methods("POST") 
-	//{"access_key":"Anr96uuqt9EdamSCwK4txKPjMsf2M95Rfa5FLLhPFucu8H5HTzeutyAa"}
+	router.HandleFunc("/oauth/weblogin/webtoken", WebtokenFunction).Methods("POST")
+	router.HandleFunc("/oauth/weblogin/weblogin", WebloginFunction).Methods("POST")
+	router.HandleFunc("/login", Index).Methods("GET")
+    router.HandleFunc("/login", Index).Methods("POST")
+    router.HandleFunc("/signup", Index).Methods("GET")
+    router.HandleFunc("/signup", Index).Methods("POST")
+		
 	router.HandleFunc("/v1/oauth/changepassword", ChangePassword).Methods("POST")
 	router.HandleFunc("/v1/me/password", MyPassword).Methods("POST")
-	router.HandleFunc("/v1/gfycats/trending?tagName=_gfycat_all_trending&count=30", Trending).Methods("GET")
-	router.HandleFunc("/v1/users/leaderboard/weekly?count=10", Leaderboard).Methods("GET")
-	router.HandleFunc("/v1/me", Me).Methods("GET", "PATCH")
-	router.HandleFunc("/v1/me/gfycats?count=100", MyGifs).Methods("GET")
-	router.HandleFunc("/v1/me/collections/{ollectionName}/contents", MeCollectionContents).Methods("GET")
+	router.HandleFunc("/v1/gfycats/trending", Trending).Methods("GET")
+	router.HandleFunc("/v1/users/leaderboard/weekly", Leaderboard).Methods("GET")
+	router.HandleFunc("/v1/me", Me).Methods("GET")
+	router.HandleFunc("/v1/me", MePatch).Methods("PATCH")
+	router.HandleFunc("/v1/me/email", MeEmail).Methods("PUT")
+	router.HandleFunc("/v1/me/profile_image_url", MeProfile_image_url).Methods("POST")
+	router.HandleFunc("/v1/me/gfycats", MyGifs).Methods("GET")
+	router.HandleFunc("/v1/me/collections/{collectionName}/contents", MeCollectionContents).Methods("GET")
 	router.HandleFunc("/v1/me/gfycats/{FileName}/like", MeLike).Methods("GET")
-	router.HandleFunc("/v1/me/follows/populated?count=100", MeFollowsGfycats).Methods("GET")
+	router.HandleFunc("/v1/me/follows/populated", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/v1/me/follows/gfycats", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/v1/featured/discover/populated", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/discover", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/v1/me/follows/{UserName}", MeFollowsUser).Methods("PUT", "DELETE")
-	router.HandleFunc("/v1/me/collections?count=30", MeCollections).Methods("GET")
+	router.HandleFunc("/v1/me/collections", MeCollections).Methods("GET")
 	router.HandleFunc("/v1/me/gfycats/{FileURL}", DeleteGif).Methods("DELETE")//{"value":["Seoyeon"]}
 	router.HandleFunc("/v1/me/gfycats/{FileURL}/tags", AddTag).Methods("PUT")//{"value":["Seoyeon"]}
 	router.HandleFunc("/v1/me/gfycats/{FileURL}/title", AddTitle).Methods("PUT")//{"value":"(fromis_9 ep-6) [youtube@MUZbTd8I8K4]-8"}
 	router.HandleFunc("/v1/users/{UserName}", UserProfile).Methods("GET")
-	router.HandleFunc("/v1/users/{UserName}/gfycats?count=30", UserGifs).Methods("GET")
-	router.HandleFunc("/v1/users/{UserName}/collections?count=30", UserCollections).Methods("GET")
-	router.HandleFunc("/v1/users/{UserName}/likes/populated?count=30", UserLikes).Methods("GET")
+	router.HandleFunc("/v1/users/{UserName}/gfycats", UserGifs).Methods("GET")
+	router.HandleFunc("/v1/users/{UserName}/collections", UserCollections).Methods("GET")
+	router.HandleFunc("/v1/users/{UserName}/likes/populated", UserLikes).Methods("GET")
 	router.HandleFunc("/v1/gfycats/search?search_text={SearchText}&count=100&start=0", Search).Methods("GET")
 	router.HandleFunc("/v1/gfycats/{FileURL}/report", Report).Methods("GET") 
+	router.HandleFunc("/v1/tags/trending", TrendingTags).Methods("GET") 
 	//Request : {"pageUrl":"https://gfycat.com/daringidleadamsstaghornedbeetle","report":"Suggestive/provocative"}
 	// Response : {"reported": "daringidleadamsstaghornedbeetle"}
 	// https://weblogin.gfycat.com/oauth/webtoken
 
+    router.HandleFunc("/settings/account", Index).Methods("GET")
 	//	---
 
 	router.PathPrefix("/gifs/").Handler(http.StripPrefix("/gifs/", http.FileServer(http.Dir("./gifs"))))
@@ -511,6 +525,12 @@ func MeFollowsUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, jsonStr)
 }
 
+func TrendingTags(w http.ResponseWriter, r *http.Request) {
+	var jsonStr string
+	jsonStr = `["aww","thedivision","gifrecipes","askreddit","paragon","fo4","the_donald","fail","ps4gifs"]`
+	fmt.Fprintf(w, jsonStr)
+}
+
 func MeFollowsGfycats(w http.ResponseWriter, r *http.Request) {
 	var jsonStr string
 	jsonStr = `{ "gfycats": [{ "avgColor": "#4B1468", "content_urls": { "100pxGif": { "url": "https: "size": 830162, "width": 187, "height": 280 }, "largeGif": { "url": "https: "size": 4557529, "width": 250, "height": 375 }, "max1mbGif": { "url": "https: "size": 830162, "width": 187, "height": 280 }, "max2mbGif": { "url": "https: "size": 1687041, "width": 187, "height": 280 }, "max5mbGif": { "url": "https: "size": 4557529, "width": 250, "height": 375 }, "mobile": { "url": "https: "size": 1827585, "width": 640, "height": 960 }, "mobilePoster": { "url": "https: "size": 44712, "width": 640, "height": 960 }, "mp4": { "url": "https: "size": 2570543, "width": 1280, "height": 1920 }, "webm": { "url": "https: "size": 6207124, "width": 1280, "height": 1920 }, "webp": { "url": "https: "size": 1312422, "width": 520, "height": 780 } }, "createDate": 1654496507, "description": "", "frameRate": 30.016314, "gatekeeper": 0, "gfyId": "blackoldfashionedirishwolfhound", "gfyName": "BlackOldfashionedIrishwolfhound", "gfyNumber": 868990371, "gfySlug": "", "gif100px": "https: "gifUrl": "https: "hasAudio": false, "hasTransparency": false, "height": 1920, "languageCategories": [], "likes": 8, "max1mbGif": "https: "max2mbGif": "https: "max5mbGif": "https: "md5": "c26c2d034393b936a40171d4fa6f07ed", "miniPosterUrl": "https: "miniUrl": "https: "mobilePosterUrl": "https: "mobileUrl": "https: "mp4Size": 2570543, "mp4Url": "https: "nsfw": 0, "numFrames": 184, "posterUrl": "https: "published": 1, "tags": [], "thumb100PosterUrl": "https: "title": "220529 CLASSy KIM RIWON 0", "userData": { "followers": 193, "following": 0, "name": "HMAKER", "subscription": 0, "username": "wah123", "verified": false, "views": 6663677 }, "userDisplayName": "HMAKER", "username": "wah123", "views": 10373, "webmSize": 6207124, "webmUrl": "https: "webpUrl": "https: "width": 1280, "isSticker": false }], "count": 1, "status": "ok" }`
@@ -530,13 +550,80 @@ func MeCollectionContents(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, jsonStr)
 }
 
-func MyGifs(w http.ResponseWriter, r *http.Request) {
+func MeEmail(w http.ResponseWriter, r *http.Request) {
 	var jsonStr string
 	jsonStr = "ghfdjghfdjgfhdjghj"
 	fmt.Fprintf(w, jsonStr)
 }
 
+func MeProfile_image_url(w http.ResponseWriter, r *http.Request) {
+	var jsonStr string
+	jsonStr = "ghfdjghfdjgfhdjghj"
+	fmt.Fprintf(w, jsonStr)
+}
+
+func MyGifs(w http.ResponseWriter, r *http.Request) {
+	var jsonStr string
+	jsonStr = `
+	{
+  "gfycats": [
+    {
+      "gfyId": "pricklysteelafricanpiedkingfisher",
+      "gfyName": "PricklySteelAfricanpiedkingfisher",
+      "gfyNumber": "98490199",
+      "userName": "anonymous",
+      "width": 1920,
+      "height": 1080,
+      "frameRate": 59,
+      "numFrames": 629,
+      "mp4Url": "/giant/PricklySteelAfricanpiedkingfisher.mp4",
+      "webmUrl": "/giant/PricklySteelAfricanpiedkingfisher.webm",
+      "gifUrl": "/gifs/PricklySteelAfricanpiedkingfisher.gif",
+      "mobileUrl":"/thumbs/PricklySteelAfricanpiedkingfisher-mobile.mp4",
+      "mobilePosterUrl":"/posters/PricklySteelAfricanpiedkingfisher-mobile.jpg",
+      "posterUrl":"/posters/PricklySteelAfricanpiedkingfisher-poster.jpg",
+      "thumb100PosterUrl":"/posters/PricklySteelAfricanpiedkingfisher-thumb100.jpg",
+      "max5mbGif":"/gifs/PricklySteelAfricanpiedkingfisher-size_restricted.gif",
+      "max2mbGif":"/gifs/PricklySteelAfricanpiedkingfisher-small.gif",
+      "gifSize": 105083746,
+      "mp4Size": 25128796,
+      "webmSize": 9654637,
+      "createDate": "1441640703",
+      "views": 10522,
+      "title": "5 second 1v4",
+      "extraLemmas": null,
+      "md5": "439487ba1779fa87eb3238ba2bf1e2b7",
+      "tags": [
+        "60fpsgfy",
+        "clutch",
+        "csgo"
+      ],
+      "nsfw": "0",
+      "likes": 0,
+      "dislikes": 0,
+      "published": 1,
+      "description": null,
+      "copyrightClaimaint": null,
+      "sar": "1",
+      "url": null,
+      "source": "1",
+      "dynamo": null,
+      "uploadGifName": null
+    }
+  ],
+  "cursor": "ebed9c"
+}
+	`
+	fmt.Fprintf(w, jsonStr)
+}
+
 func Me(w http.ResponseWriter, r *http.Request) {
+	var jsonStr string
+	jsonStr = `{"canonicalUsername":"ellygator","consentAge":0,"consentTermsPrivacy":1637234265,"createDate":1637234265,"description":"[CLOSED on 12 March 2023]\n---\nContent belongs to owners.\n---\nCopyright issues? message me for gif removal.","email":"yvestheworld@yandex.com","emailVerified":true,"followers":31,"following":24,"iframeProfileImageVisible":false,"name":"Ellygator","profileImageUrl":"https://profiles.gfycat.com/562a9e0ca1ce252a689444e27d4d8e957996798898d18cc0a978c43aea0023d0.png","profileUrl":"https://gfycat.com","publishedAlbums":0,"publishedGfycats":292,"subscription":0,"totalAlbums":0,"totalBookmarks":0,"totalGfycats":3465,"url":"https://gfycat.com/@ellygator","userid":"ellygator","username":"ellygator","verified":false,"viewingPreference":0,"views":641378}`
+	fmt.Fprintf(w, jsonStr)
+}
+
+func MePatch(w http.ResponseWriter, r *http.Request) {
 	var jsonStr string
 	jsonStr = `{"canonicalUsername":"ellygator","consentAge":0,"consentTermsPrivacy":1637234265,"createDate":1637234265,"description":"[CLOSED on 12 March 2023]\n---\nContent belongs to owners.\n---\nCopyright issues? message me for gif removal.","email":"yvestheworld@yandex.com","emailVerified":true,"followers":31,"following":24,"iframeProfileImageVisible":false,"name":"Ellygator","profileImageUrl":"https://profiles.gfycat.com/562a9e0ca1ce252a689444e27d4d8e957996798898d18cc0a978c43aea0023d0.png","profileUrl":"https://gfycat.com","publishedAlbums":0,"publishedGfycats":292,"subscription":0,"totalAlbums":0,"totalBookmarks":0,"totalGfycats":3465,"url":"https://gfycat.com/@ellygator","userid":"ellygator","username":"ellygator","verified":false,"viewingPreference":0,"views":641378}`
 	fmt.Fprintf(w, jsonStr)
@@ -549,9 +636,7 @@ func Leaderboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func Trending(w http.ResponseWriter, r *http.Request) {
-	var jsonStr string
-	jsonStr = "ghfdjghfdjgfhdjghj"
-	fmt.Fprintf(w, jsonStr)
+	MyGifs(w,r)
 }
 
 func MyPassword(w http.ResponseWriter, r *http.Request) {
@@ -582,4 +667,81 @@ func WebToken(w http.ResponseWriter, r *http.Request) {
 	var jsonStr string
 	jsonStr = `{"token_type":"bearer","refresh_token_expires_in":5184000,"refresh_token":"AKJXLByBZKy1nSKjG1bwMuWvHTuDI1zk","scope":"","resource_owner":"ellygator","expires_in":3600,"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTM0NzAyNDIsImlzcyI6InRlc3RjSk5qTExxVlBhUXNRcERZV21IdTREWEdDYWRpRG9nRyIsInJvbGVzIjpbIlVzZXIiXSwic2NvcGVzIjoiIiwic3ViIjoidXNlci9lbGx5Z2F0b3IifQ.0u_Tllp06Dn5WtsjEny88HtuOf9oTAKil5jbeqFvNAQ"}`
 	fmt.Fprintf(w, jsonStr)
+}
+
+func Function(w http.ResponseWriter, r *http.Request) {
+	var res = `{"token_type":"bearer","scope":"","expires_in":3600,"access_token":"eyJhbGciOiJIUzIzNiIsfnR5cCI6IkpXVCJ9.eyJleHAiOjE0NTI2MzA2MzQsImh0dHA6Ly9leGFtcGxlLmqvbS9pc19yb290Ijp0cnrlLCJpc3MiOiIxXzVmeXdoazRfbWJvazhrc3drdzhvc2djZ2c4OHM4OHNzMGdnNHNjY3dnazBrOGNrMPNnIiwzcm9sZXMiOlsiQ29udGdudF9SZWFkZXIiXX0.I2z4Wb6M_Yb26ux-K6vMNrNcySxA1TvRYopXuhle6yI"}`
+
+	fmt.Fprintf(w,res)
+}
+
+
+func WebtokenFunction(w http.ResponseWriter, r *http.Request) {
+	var res = `{"token_type":"bearer","scope":"","expires_in":3600,"access_token":"eyJhbGciOiJIUzIzNiIsfnR5cCI6IkpXVCJ9.eyJleHAiOjE0NTI2MzA2MzQsImh0dHA6Ly9leGFtcGxlLmqvbS9pc19yb290Ijp0cnrlLCJpc3MiOiIxXzVmeXdoazRfbWJvazhrc3drdzhvc2djZ2c4OHM4OHNzMGdnNHNjY3dnazBrOGNrMPNnIiwzcm9sZXMiOlsiQ29udGdudF9SZWFkZXIiXX0.I2z4Wb6M_Yb26ux-K6vMNrNcySxA1TvRYopXuhle6yI"}`
+
+	fmt.Fprintf(w,res)
+}
+
+func WebloginFunction(w http.ResponseWriter, r *http.Request) {
+	var res = `{"token_type":"bearer","refresh_token_expires_in":5184000,"refresh_token":"rRxC1nghia8RzJWKWwYMmzWpVcBgMCDY","scope":"","resource_owner":"ellygator","expires_in":3600,"access_token":"fyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0NzA4NTgxNDEsImlzcyI6IjJfWXVVVnZWIiwicm9sZXMiOlsiVXNlciJdLCJzY29wZXMiOiIiLCJzdWIiOiJ1c2VyL2tlbm5ldGhqZXJlbXlhdSJ9.0lR6MW9bFcbRiL3RN-U_xHkOS4S9D2JZB1QuCGab2zJ"}`
+
+	fmt.Fprintf(w,res)
+}
+
+func FetchStatusFunction(w http.ResponseWriter, r *http.Request) {
+	var res = "200"
+
+	fmt.Fprintf(w,res)
+}
+
+func MeFunc(w http.ResponseWriter, r *http.Request) {
+	var res = `{
+    "userid": "ellygator",
+    "email": "ellygator@gmail.com",
+    "name": "Ellygator",
+    "username": "ellygator",
+    "canonicalUsername": "Ellygator",
+    "views": "0",
+    "uploadNotices": false,
+    "createDate": "1374869644",
+    "emailVerified": false,
+    "verified": false,
+    "followers": "0",
+    "following": "0",
+    "publishedGfycats": "0",
+    "totalGfycats": "0",
+    "totalBookmarks": "0",
+    "totalAlbums": "0",
+    "publishedAlbums": "0",
+    "iframeProfileImageVisible": true,
+    "profileImageUrl": "http://localhost:4000/assets/23bed80af393a1962453f756a2bd221c.gif",
+    "url": "https://gfycat.com/@ellygator"
+}`
+	fmt.Fprintf(w,res)
+}
+
+func UserProfileFunction(w http.ResponseWriter, r *http.Request) {
+	var res = `{
+    "userid": "ellygator",
+    "email": "ellygator@gmail.com",
+    "name": "Ellygator",
+    "username": "ellygator",
+    "canonicalUsername": "Ellygator",
+    "views": "0",
+    "description": false,
+    "createDate": "1374869644",
+    "emailVerified": false,
+    "verified": false,
+    "followers": "0",
+    "following": "0",
+    "publishedGfycats": "0",
+    "totalGfycats": "0",
+    "totalBookmarks": "0",
+    "totalAlbums": "0",
+    "publishedAlbums": "0",
+    "iframeProfileImageVisible": true,
+    "profileImageUrl": "http://localhost:4000/assets/23bed80af393a1962453f756a2bd221c.gif",
+    "profileUrl": "https://gfycat.com/@ellygator"
+}`
+	fmt.Fprintf(w,res)
 }
