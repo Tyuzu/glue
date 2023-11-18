@@ -17434,7 +17434,7 @@
                                 m = h.playable,
                                 g = (0, U.K)(a),
                                 y = "/".concat(g),
-                                E = "/".concat(d || p);
+                                E = "localhost:4000/".concat(d || p);
                             return I.createElement("div", {
                                 className: "grid-gfy-item",
                                 ref: this.ref
@@ -20156,7 +20156,7 @@
                                     l = t.views,
                                     f = new Date(1e3 * o),
                                     d = C.createElement(F.Z, {
-                                        text: "/".concat(a),
+                                        text: "localhost:4000/".concat(a),
                                         analyticsData: {
                                             event: "share_attempt",
                                             params: {
