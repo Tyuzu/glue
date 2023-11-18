@@ -148,7 +148,7 @@ func Res(w http.ResponseWriter, r *http.Request) {
 func IFR(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r.URL.Path)
 	vars := mux.Vars(r)
-	FileName, _ := rdxHget("ginamef", vars["FileName"])
+	FileName := vars["FileName"]
 	FileTitle, _ := rdxHget("giftitle", strings.ToLower(vars["FileName"]))
 	tmpl.ExecuteTemplate(w, "ifr_.html", GifDetails{GifID: FileName, GifURL: vars["FileName"], GifTitle: FileTitle})
 }
@@ -448,7 +448,7 @@ func GenerateName(w int64) string {
 	p1 := fmt.Sprintf(adjectives[rndm.Intn(len(adjectives))])
 	p2 := fmt.Sprintf(adjectives[rndm.Intn(len(adjectives))])
 	p3 := fmt.Sprintf(animals[rndm.Intn(len(animals))])
-	return p1 + p2 + p3
+	return strings.ToLower(p1 + p2 + p3)
 }
 
 func renderError(w http.ResponseWriter, message string, statusCode int) {
