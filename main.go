@@ -18,7 +18,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const PORT = ":8000"
+const PORT = "localhost:4000"
 
 var tmpl = template.Must(template.ParseGlob("*.html"))
 var uploadPath = "./giants"
@@ -39,6 +39,7 @@ func HandleRoutes() {
 	router.HandleFunc("/upload", UploadFileHandler).Methods("POST")
 	router.HandleFunc("/upload", Index).Methods("GET")
 	router.HandleFunc("/create", Index).Methods("GET")
+	router.HandleFunc("/gifs/search/csgo", Index).Methods("GET")
 	router.HandleFunc("/me/subscription", Index)
 	router.HandleFunc("/upload/results", Index)
 	router.HandleFunc("/v1/gfycats/fetch/status/{FileName}", Status)
@@ -76,7 +77,7 @@ func HandleRoutes() {
 	router.HandleFunc("/v1/me/profile_image_url", MeProfile_image_url).Methods("POST")
 	router.HandleFunc("/v1/me/gfycats", MyGifs).Methods("GET")
 	router.HandleFunc("/v1/me/collections/{collectionName}/contents", MeCollectionContents).Methods("GET")
-	router.HandleFunc("/v1/me/gfycats/{FileName}/like", MeLike).Methods("GET")
+	router.HandleFunc("/v1/me/gfycats/{FileName}/like", MeLike).Methods("PUT")
 	router.HandleFunc("/v1/me/follows/populated", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/v1/me/follows/gfycats", MeFollowsGfycats).Methods("GET")
 	router.HandleFunc("/v1/featured/discover/populated", MeFollowsGfycats).Methods("GET")
@@ -86,11 +87,12 @@ func HandleRoutes() {
 	router.HandleFunc("/v1/me/gfycats/{FileURL}", DeleteGif).Methods("DELETE")//{"value":["Seoyeon"]}
 	router.HandleFunc("/v1/me/gfycats/{FileURL}/tags", AddTag).Methods("PUT")//{"value":["Seoyeon"]}
 	router.HandleFunc("/v1/me/gfycats/{FileURL}/title", AddTitle).Methods("PUT")//{"value":"(fromis_9 ep-6) [youtube@MUZbTd8I8K4]-8"}
+	router.HandleFunc("/v1/me/subscription", Subscription).Methods("GET")
 	router.HandleFunc("/v1/users/{UserName}", UserProfile).Methods("GET")
 	router.HandleFunc("/v1/users/{UserName}/gfycats", UserGifs).Methods("GET")
 	router.HandleFunc("/v1/users/{UserName}/collections", UserCollections).Methods("GET")
 	router.HandleFunc("/v1/users/{UserName}/likes/populated", UserLikes).Methods("GET")
-	router.HandleFunc("/v1/gfycats/search?search_text={SearchText}&count=100&start=0", Search).Methods("GET")
+	router.HandleFunc("/v1/gfycats/search", Search).Methods("GET")
 	router.HandleFunc("/v1/gfycats/{FileURL}/report", Report).Methods("GET") 
 	router.HandleFunc("/v1/tags/trending", TrendingTags).Methods("GET") 
 	//Request : {"pageUrl":"https://gfycat.com/daringidleadamsstaghornedbeetle","report":"Suggestive/provocative"}
@@ -156,22 +158,24 @@ func IFR(w http.ResponseWriter, r *http.Request) {
 //~ tmpl.ExecuteTemplate(w,"amp_.html",nil)
 //~ }
 
-func Name(w http.ResponseWriter, r *http.Request) {
+func GetBodyBytes(w http.ResponseWriter, r *http.Request) string {
 	fmt.Println(r.URL.Path)
 	var bodyBytes []byte
 	var err error
-
 	if r.Body != nil {
-		bodyBytes,
-			err = io.ReadAll(r.Body)
+		bodyBytes, err = io.ReadAll(r.Body)
 		if err != nil {
 			fmt.Printf("Body reading error: %v", err)
-			return
+			return ""
 		}
 		defer r.Body.Close()
 	}
+	fmt.Sprintf(string(bodyBytes))
+	return string(bodyBytes)
+}
 
-	fmt.Println(DecodeVidProps(string(bodyBytes)))
+func Name(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(DecodeVidProps(GetBodyBytes(w,r)))
 	fmt.Println(r.URL.Path)
 	FileName := GenerateName(rndmToken(12))
 	rdxHset("ginamef", strings.ToLower(FileName), FileName)
@@ -206,7 +210,6 @@ type Message struct {
 
 func DecodeVidProps(jsonStream string) Message {
 	//~ const jsonStream =	`{"private":false,"title":"RudeLavishCoyote-mobile","noMd5":true,"tags":["DSFDS"],"cut":{"start":1.27,"duration":10.06},"nsfw":false,"keepAudio":false,"captions":[{"text":"DFDSD","startSeconds":2.96,"duration":7.1,"xRelative":35,"yRelative":93,"fontHeightRelative":5}]}`
-
 	dec := json.NewDecoder(strings.NewReader(jsonStream))
 	//~ for {
 	var m Message
@@ -484,9 +487,7 @@ func AddTitle(w http.ResponseWriter, r *http.Request) {
 }
 
 func Search(w http.ResponseWriter, r *http.Request) {
-	var jsonStr string
-	jsonStr = "ghfdjghfdjgfhdjghj"
-	fmt.Fprintf(w, jsonStr)
+	MyGifs(w,r)
 }
 
 func UserLikes(w http.ResponseWriter, r *http.Request) {
@@ -503,7 +504,7 @@ func UserCollections(w http.ResponseWriter, r *http.Request) {
 
 func UserGifs(w http.ResponseWriter, r *http.Request) {
 	var jsonStr string
-	jsonStr = "ghfdjghfdjgfhdjghj"
+	jsonStr = "Zeun"
 	fmt.Fprintf(w, jsonStr)
 }
 
@@ -568,23 +569,23 @@ func MyGifs(w http.ResponseWriter, r *http.Request) {
 	{
   "gfycats": [
     {
-      "gfyId": "pricklysteelafricanpiedkingfisher",
-      "gfyName": "PricklySteelAfricanpiedkingfisher",
+      "gfyId": "acidicacrobaticindianglassfish",
+      "gfyName": "AcidicAcrobaticIndianglassfish",
       "gfyNumber": "98490199",
       "userName": "anonymous",
       "width": 1920,
       "height": 1080,
       "frameRate": 59,
       "numFrames": 629,
-      "mp4Url": "/giant/PricklySteelAfricanpiedkingfisher.mp4",
-      "webmUrl": "/giant/PricklySteelAfricanpiedkingfisher.webm",
-      "gifUrl": "/gifs/PricklySteelAfricanpiedkingfisher.gif",
-      "mobileUrl":"/thumbs/PricklySteelAfricanpiedkingfisher-mobile.mp4",
-      "mobilePosterUrl":"/posters/PricklySteelAfricanpiedkingfisher-mobile.jpg",
-      "posterUrl":"/posters/PricklySteelAfricanpiedkingfisher-poster.jpg",
-      "thumb100PosterUrl":"/posters/PricklySteelAfricanpiedkingfisher-thumb100.jpg",
-      "max5mbGif":"/gifs/PricklySteelAfricanpiedkingfisher-size_restricted.gif",
-      "max2mbGif":"/gifs/PricklySteelAfricanpiedkingfisher-small.gif",
+      "mp4Url": "/giant/AcidicAcrobaticIndianglassfish.mp4",
+      "webmUrl": "/giant/AcidicAcrobaticIndianglassfish.webm",
+      "gifUrl": "/gifs/AcidicAcrobaticIndianglassfish.gif",
+      "mobileUrl":"/thumbs/AcidicAcrobaticIndianglassfish-mobile.mp4",
+      "mobilePosterUrl":"/posters/AcidicAcrobaticIndianglassfish-mobile.jpg",
+      "posterUrl":"/posters/AcidicAcrobaticIndianglassfish-poster.jpg",
+      "thumb100PosterUrl":"/posters/AcidicAcrobaticIndianglassfish-thumb100.jpg",
+      "max5mbGif":"/gifs/AcidicAcrobaticIndianglassfish-size_restricted.gif",
+      "max2mbGif":"/gifs/AcidicAcrobaticIndianglassfish-small.gif",
       "gifSize": 105083746,
       "mp4Size": 25128796,
       "webmSize": 9654637,
@@ -637,6 +638,12 @@ func Leaderboard(w http.ResponseWriter, r *http.Request) {
 
 func Trending(w http.ResponseWriter, r *http.Request) {
 	MyGifs(w,r)
+}
+
+func Subscription(w http.ResponseWriter, r *http.Request) {
+	var jsonStr string
+	jsonStr = "ghfdjghfdjgfhdjghj"
+	fmt.Fprintf(w, jsonStr)
 }
 
 func MyPassword(w http.ResponseWriter, r *http.Request) {
@@ -721,12 +728,13 @@ func MeFunc(w http.ResponseWriter, r *http.Request) {
 }
 
 func UserProfileFunction(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
 	var res = `{
-    "userid": "ellygator",
+    "userid": "`+ vars["userid"] +`",
     "email": "ellygator@gmail.com",
-    "name": "Ellygator",
-    "username": "ellygator",
-    "canonicalUsername": "Ellygator",
+    "name": "`+ vars["userid"] +`",
+    "username": "`+ vars["userid"] +`",
+    "canonicalUsername": "`+ vars["userid"] +`",
     "views": "0",
     "description": false,
     "createDate": "1374869644",
@@ -741,7 +749,7 @@ func UserProfileFunction(w http.ResponseWriter, r *http.Request) {
     "publishedAlbums": "0",
     "iframeProfileImageVisible": true,
     "profileImageUrl": "http://localhost:4000/assets/23bed80af393a1962453f756a2bd221c.gif",
-    "profileUrl": "https://gfycat.com/@ellygator"
+    "profileUrl": "https://gfycat.com/@`+ vars["userid"] +`"
 }`
 	fmt.Fprintf(w,res)
 }
