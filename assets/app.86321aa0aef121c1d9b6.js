@@ -17434,7 +17434,7 @@
                                 m = h.playable,
                                 g = (0, U.K)(a),
                                 y = "/".concat(g),
-                                E = "localhost:4000/".concat(d || p);
+                                E = "https://fromisoda.onrender.com/".concat(d || p);
                             return I.createElement("div", {
                                 className: "grid-gfy-item",
                                 ref: this.ref
@@ -20156,7 +20156,7 @@
                                     l = t.views,
                                     f = new Date(1e3 * o),
                                     d = C.createElement(F.Z, {
-                                        text: "localhost:4000/".concat(a),
+                                        text: "https://fromisoda.onrender.com/".concat(a),
                                         analyticsData: {
                                             event: "share_attempt",
                                             params: {
@@ -21871,7 +21871,7 @@
                                     srcSet: D,
                                     type: "image/jpeg"
                                 }) : null, O ? Z.createElement("source", {
-                                    srcSet: _ || "https://localhost:4000/thumb/".concat(d, ".webp"),
+                                    srcSet: _ || "https://fromisoda.onrender.com/thumb/".concat(d, ".webp"),
                                     type: "image/webp"
                                 }) : null, a ? Z.createElement("source", {
                                     srcSet: C || E,
