@@ -20,10 +20,7 @@ import (
     //~ })
 	
     var rxdurl string = os.Getenv("REDIS_URL")
-    var rxdopts, rxderr = redis.ParseURL(rxdurl)
-    if rxderr != nil {
-        log.Println(rxderr)
-    }
+    var rxdopts, _ = redis.ParseURL(rxdurl)
     var conn = redis.NewClient(rxdopts)
 
 
