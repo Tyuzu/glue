@@ -19,12 +19,12 @@ import (
         //~ DB:       0,  // use default DB
     //~ })
 	
-    var url string = os.Getenv("REDIS_URL")
-    opts, err := redis.ParseURL(url)
-    if err != nil {
-        log.Println(err)
+    var rxdurl string = os.Getenv("REDIS_URL")
+    var rxdopts, rxderr = redis.ParseURL(rxdurl)
+    if rxderr != nil {
+        log.Println(rxderr)
     }
-    var conn = redis.NewClient(opts)
+    var conn = redis.NewClient(rxdopts)
 
 
 func init() {
