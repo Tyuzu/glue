@@ -10,12 +10,21 @@ import (
     "github.com/joho/godotenv"
 )
 
-var redis_url = os.Getenv("REDIS_URL")
+//~ var redis_url = os.Getenv("REDIS_URL")
+//~ var redis_pass = os.Getenv("REDIS_PASSWORD")
 
-var conn = redis.NewClient(&redis.Options{
-        Addr:     redis_url,
-        DB:       0,  // use default DB
-    })
+//~ var conn = redis.NewClient(&redis.Options{
+        //~ Addr:     redis_url,
+        //~ Password: redis_pass, // no password set
+        //~ DB:       0,  // use default DB
+    //~ })
+	
+    var url string = os.Getenv("REDIS_URL")
+    opts, err := redis.ParseURL(url)
+    if err != nil {
+        log.Println(err)
+    }
+    var conn = redis.NewClient(opts)
 
 
 func init() {
