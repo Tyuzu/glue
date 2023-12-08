@@ -13159,9 +13159,9 @@
                 }
                 var A = "SET_USER_COOKIE",
                     R = "SET_SESSION_COOKIE",
-                    L = "https://umetrics.gfycat.com/pix.gif",
-                    N = "https://px.gfycat.com/px.gif",
-                    P = "com.gfycat.website",
+                    L = "https://metricsxfy.onrender.com/xip.gif",
+                    N = "https://pxxfy.onrender.com/px.gif",
+                    P = "com.xfy.website",
                     Z = function (e) {
                         var t = e.gfyId,
                             n = e.params,
@@ -13252,7 +13252,7 @@
                                     serverOnly: a
                                 });
                                 var o;
-                                r.app_id || (r.app_id = "com.gfycat.website"), e({
+                                r.app_id || (r.app_id = "com.xfy.website"), e({
                                     type: "SEND_EVENT",
                                     payload: {
                                         event: (o = {
@@ -28010,7 +28010,7 @@
                                     r = n.gfyItem.gfyId,
                                     o = n.type,
                                     a = t.state.title,
-                                    i = L()(e = "https://www.reddit.com/submit?url=https%3A%2F%2Fgfycat.com%2F".concat(r, "&title=")).call(e, a);
+                                    i = L()(e = "https://www.reddit.com/submit?url=https%3A%2F%2Ffromisoda.onrender.com%2F".concat(r, "&title=")).call(e, a);
                                 window.open(i, "popUpWindow", "width=1024,height=650,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"), t.sendEvent({
                                     event: Te,
                                     channel: o
@@ -28021,7 +28021,7 @@
                                     o = n.gfyItem,
                                     a = t.state.title,
                                     i = (0, fe.K)(o),
-                                    u = L()(e = "https://www.tumblr.com/share/link?url=https%3A%2F%2Fgfycat.com%2F".concat(i, "&amp;name=")).call(e, a);
+                                    u = L()(e = "https://www.tumblr.com/share/link?url=https%3A%2F%2Ffromisoda.onrender.com%2F".concat(i, "&amp;name=")).call(e, a);
                                 window.open(u, "popUpWindow", "width=540,height=669,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"), t.sendEvent({
                                     event: Te,
                                     channel: r
@@ -28033,7 +28033,7 @@
                                     i = o.max5mbGif,
                                     u = t.state.title,
                                     s = (0, fe.K)(o),
-                                    c = L()(e = L()(n = "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fgfycat.com%2F".concat(s, "&media=")).call(n, i, "&description=")).call(e, u);
+                                    c = L()(e = L()(n = "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Ffromisoda.onrender.com%2F".concat(s, "&media=")).call(n, i, "&description=")).call(e, u);
                                 window.open(c, "popUpWindow", "width=750,height=518,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"), t.sendEvent({
                                     event: Te,
                                     channel: a
@@ -28050,7 +28050,7 @@
                                     i = o.mobilePosterUrl,
                                     u = t.state.title,
                                     s = (0, fe.K)(o),
-                                    c = L()(e = L()(n = "https://vk.com/share.php?url=https%3A%2F%2Fgfycat.com%2F".concat(s, "&image=")).call(n, i, "&title=")).call(e, u);
+                                    c = L()(e = L()(n = "https://vk.com/share.php?url=https%3A%2F%2Ffromisoda.onrender.com%2F".concat(s, "&image=")).call(n, i, "&title=")).call(e, u);
                                 window.open(c, "popUpWindow", "width=750,height=518,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"), t.sendEvent({
                                     event: Te,
                                     channel: a
@@ -28206,8 +28206,8 @@
                             x = "0" === w && 0 === m()(A, 10) ? [Z, N].join(" ") : Z,
                             k = "" === x ? "" : "<p>".concat(x, "</p>"),
                             F = Math.round(640 / R + 44),
-                            M = h()(n = h()(r = "<iframe src='https://gfycat.com/ifr/".concat(p, "' frameborder='0' scrolling='no' allowfullscreen width='640' height='")).call(r, F, "'></iframe>")).call(n, k),
-                            U = h()(o = h()(a = h()(i = "<div style='position:relative; padding-bottom:calc(".concat((100 / R).toFixed(2), "% + ")).call(i, 44, "px)'><iframe src='https://gfycat.com/ifr/")).call(a, p, "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>")).call(o, k);
+                            M = h()(n = h()(r = "<iframe src='https://fromisoda.onrender.com/ifr/".concat(p, "' frameborder='0' scrolling='no' allowfullscreen width='640' height='")).call(r, F, "'></iframe>")).call(n, k),
+                            U = h()(o = h()(a = h()(i = "<div style='position:relative; padding-bottom:calc(".concat((100 / R).toFixed(2), "% + ")).call(i, 44, "px)'><iframe src='https://fromisoda.onrender.com/ifr/")).call(a, p, "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>")).call(o, k);
                         return d.createElement("div", {
                             className: "share-overlay__embed-container"
                         }, d.createElement("div", {
@@ -37551,7 +37551,7 @@
                                 }
                             })
                         })), (0, _.Z)(this, "getGeoRegion", (function () {
-                            return t._request("https://geo.gfycat.com", {}, 0, 1)
+                            return t._request("https://geoxfy.onrender.com", {}, 0, 1)
                         })), this.time = new Date, this.webloginEndpoint = "/oauth", this.webloginAccessKey = "Anr96uuqt9EdamSCwK4txKPjMsf2M95Rfa5FLLhPFucu8H5HTzeutyAa", this.apiEndpoint = "/v1", this.retryLimit = 2
                     }
                     var t;
@@ -40245,10 +40245,10 @@
                         return {
                             "@context": "http://schema.org",
                             "@type": "WebSite",
-                            url: "https://gfycat.com/",
+                            url: "https://fromisoda.onrender.com/",
                             potentialAction: {
                                 "@type": "SearchAction",
-                                target: "https://gfycat.com/gifs/search/{search_term_string}",
+                                target: "https://fromisoda.onrender.com/gifs/search/{search_term_string}",
                                 "query-input": "required name=search_term_string"
                             }
                         }
@@ -40303,7 +40303,7 @@
                                 url: e,
                                 contentUrl: s,
                                 thumbnailUrl: y,
-                                embedUrl: "https://gfycat.com/ifr/".concat(i),
+                                embedUrl: "https://fromisoda.onrender.com/ifr/".concat(i),
                                 uploadDate: R,
                                 height: l,
                                 width: w,
@@ -40320,7 +40320,7 @@
                                 url: e,
                                 contentUrl: m,
                                 thumbnailUrl: y,
-                                embedUrl: "https://gfycat.com/ifr/".concat(i),
+                                embedUrl: "https://fromisoda.onrender.com/ifr/".concat(i),
                                 uploadDate: R,
                                 height: l,
                                 width: w,
@@ -40335,14 +40335,14 @@
                     },
                     N = function () {
                         var e, t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
-                            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "https://gfycat.com/",
+                            n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "https://fromisoda.onrender.com/",
                             r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : "",
                             o = b()(e = I()(t).call(t, 0, 45)).call(e, (function (e, t) {
                                 var n;
                                 return {
                                     "@type": "ListItem",
                                     position: t + 1,
-                                    url: _()(n = "http://gfycat.com/".concat(r)).call(n, e)
+                                    url: _()(n = "http://fromisoda.onrender.com/".concat(r)).call(n, e)
                                 }
                             }));
                         return {
